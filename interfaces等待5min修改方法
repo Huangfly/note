@@ -1,0 +1,9 @@
+提示：A start job is running for Raise network interface （7min 16s），然后要等待七分多钟才能进系统，这个实在是无法忍受，网上找了一下解决方法：
+
+进入系统后修改文件/etc/systemd/system/network-online.target.wants/networking.service
+
+命令：sudo vim /etc/systemd/system/network-online.target.wants/networking.service
+
+将里面的TimeoutStartSec=5min  修改为TimeoutStartSec=10sec
+
+然后重启系统，就可以生效了
