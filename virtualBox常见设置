@@ -1,0 +1,6 @@
+复制粘贴：虚拟机设置-存储-控制器SATA-勾选"使用主机输入输出(I/O)缓存"
+
+挂在共享文件夹：
+virtualBox上设置共享文件夹
+mkdir /mnt/share/
+sudo mount -t vboxsf shared /mnt/share/
