@@ -1,0 +1,13 @@
+1、安装bash-completion
+apt-get install bash-completion
+
+2、编辑~/.bashrc 文件
+添加如下内容：
+
+if [ -f /etc/bash_completion ]; then
+
+. /etc/bash_completion
+fi
+
+3、使其立即生效
+source ~/.bashrc
