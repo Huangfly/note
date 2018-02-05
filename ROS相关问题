@@ -1,0 +1,19 @@
+1、
+sudo rosdep init
+
+此处可能有坑！！！
+
+返回：
+ERROR：cannot download default sources list from:
+https://raw.githubusercontent.com/ros/rosdistro/master/rosdep/sources.list.d/20-default.list
+Website may be down
+
+sudo c_rehash /etc/ssl/certs
+sudo -E rosdep init
+继续
+
+rosdep update
+最后
+
+echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+source ~/.bashrc
