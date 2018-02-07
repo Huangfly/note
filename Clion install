@@ -1,0 +1,12 @@
+
+解压压缩包，进入到clion文件中的bin文件里，运行clion.sh  
+
+安装过程中选择“Active”和“License server”
+
+如果安装16版本的输入http://bash.pub:1017
+
+      如果安装17版本的输入http://xidea.online
+
+
+
+按照默认一直运行即可。
