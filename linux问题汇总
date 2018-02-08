@@ -1,0 +1,1 @@
+开发板串口不能登录root   将串口添加到/etc/securetty文件中
