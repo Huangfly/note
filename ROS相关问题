@@ -1,4 +1,5 @@
-1、
+1、ROS相关问题
+  1）安装ros的时候初始化依赖失败
 sudo rosdep init
 
 此处可能有坑！！！
@@ -17,3 +18,17 @@ rosdep update
 
 echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
 source ~/.bashrc
+  
+  
+  2）
+
+2.安装cartographer碰到的问题
+  1）会报protobuf错误；
+    使用cmake .. -DBUILD_SHARED_LIBS=ON
+  2)gtest错误；
+    修改gtest的CMakelist.txt文件
+    在project（gtest CXXC）后面添加 cmake_policy(SET CMP0002 OLD)
+  3）cairo版本错误，用apt安装libcairo2-dev库；
+    
+
+
