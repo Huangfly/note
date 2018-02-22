@@ -27,7 +27,7 @@ source ~/.bashrc
     使用cmake .. -DBUILD_SHARED_LIBS=ON
   2)gtest错误；
     修改gtest的CMakelist.txt文件
-    在project（gtest CXXC）后面添加 cmake_policy(SET CMP0002 OLD)
+    在project（gtest CXX C）后面添加 cmake_policy(SET CMP0002 OLD)
   3）cairo版本错误，用apt安装libcairo2-dev库；
     
 
