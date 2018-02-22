@@ -1,1 +1,11 @@
-开发板串口不能登录root   将串口添加到/etc/securetty文件中
+1）开发板串口不能登录root   将串口添加到/etc/securetty文件中
+
+2）创建交换空间
+  mkdir /swapfile
+  cd /swapfile  
+  sudo dd if=/dev/zero of=swap bs=1024 count=2000000
+  把生成的文件转换成 Swap 文件
+  sudo mkswap -f  swap
+  激活 Swap 文件。
+  sudo swapon swap
+
