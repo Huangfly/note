@@ -29,6 +29,21 @@ source ~/.bashrc
     修改gtest的CMakelist.txt文件
     在project（gtest CXX C）后面添加 cmake_policy(SET CMP0002 OLD)
   3）cairo版本错误，用apt安装libcairo2-dev库；
+  
+3.想要使用navigation下的robot_pose_ekf做IMU与视觉的融合于是找到了这个包：https://github.com/ros-planning/navigation/tree/indigo-devel
+但是编译报错：
+
+    – package ‘orocos-bfl’ not found
+    CMake Error at /usr/share/cmake-2.8/Modules/FindPkgConfig.cmake:283 (message):
+    A required package was not found
+    Call Stack (most recent call first):
+    /usr/share/cmake-2.8/Modules/FindPkgConfig.cmake:337 (_pkg_check_modules_internal)
+    robot_pose_ekf/CMakeLists.txt:6 (pkg_check_modules)
+
+原因：系统缺少bfl包。
+解决方法：安装bfl包：
+sudo apt-get install ros-indigo-bfl
+再编译，成功解决！
     
 
 
