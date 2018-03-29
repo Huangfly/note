@@ -8,4 +8,20 @@
   sudo mkswap -f  swap
   激活 Swap 文件。
   sudo swapon swap
+  
+  
+3）interface
+source-directory /etc/network/interfaces.d
+auto lo
+iface lo inet loopback
+
+auto wlan0
+iface wlan0 inet static
+wpa-ssid ""
+wpa-psk ""
+address 192.168.1.59
+gateway 192.168.1.1
+netmask 255.255.255.0
+broadcast 192.168.1.255
+dns-nameserver 192.168.1.1 8.8.8.8 202.96.185.86
 
