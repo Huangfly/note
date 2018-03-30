@@ -1,0 +1,71 @@
+1、/etc/network/interfaces
+allow-hotplug wlan0 
+iface wlan0 inet static 
+address 112.113.114.1 
+netmask 255.255.255.0 
+up if pgrep hostapd ; then pkill hostapd ; fi 
+up iptables -t nat -F
+post-up hostapd /etc/hostapd/wpa2.conf -B 
+post-up service isc-dhcp-server restart 
+post-up iptables -A FORWARD -i wlan0 -o eth0 -s 112.113.114.0/24 -m state --state NEW -j ACCEPT 
+post-up iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT 
+post-up iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE post-up echo "1" >/proc/sys/net/ipv4/ip_forward 
+down if pgrep hostapd ; then pkill hostapd ; fi 
+down iptables -t nat -F
+
+
+
+
+2./etc/hostapd/wpa2.conf
+interface=wlan0 
+driver=nl80211 
+ssid=dy-ap 
+hw_mode=g 
+channel=11 
+macaddr_acl=0 
+auth_algs=3 
+wpa=2 
+wpa_passphrase=qweqweqwe 
+wpa_key_mgmt=WPA-PSK 
+rsn_pairwise=TKIP CCMP
+
+
+#sets the wifi interface to use, is wlan0 in most cases
+interface=wlan0
+#driver to use, nl80211 works in most cases
+#driver=ap6356s
+driver=nl80211
+#sets the ssid of the virtual wifi access point
+ssid=ff
+#sets the mode of wifi, depends upon the devices you will be using. It can be a,b,g,n. Setting to g ensures backward compatiblity.
+hw_mode=g
+#sets the channel for your wifi
+channel=6
+#macaddr_acl sets options for mac address filtering. 0 means “accept unless in deny list”
+macaddr_acl=0
+#setting ignore_broadcast_ssid to 1 will disable the broadcasting of ssid
+ignore_broadcast_ssid=0
+#Sets authentication algorithm
+#1 - only open system authentication
+#2 - both open system authentication and shared key authentication
+auth_algs=3
+#####Sets WPA and WPA2 authentication#####
+#wpa option sets which wpa implementation to use
+#1 - wpa onluessinG
+#sets wpa key management
+wpa_key_mgmt=WPA-PSK
+#sets encryption used by WPA
+wpa_pairwise=TKIP
+#sets encryption used by WPA2
+rsn_pairwise=CCMP
+
+
+3./etc/dhcp/dhcp.conf
+subnet 112.113.114.0 netmask 255.255.255.0 
+{ 
+  range 112.113.114.2 112.113.114.10; 
+  option routers 112.113.114.1; 
+  option domain-name-servers 10.0.0.1; 
+}
+
+
