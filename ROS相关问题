@@ -46,4 +46,7 @@ sudo apt-get install ros-indigo-bfl
 再编译，成功解决！
     
 
+4、cartographer
+sudo apt-get install -y Python-wstool python-rosdep ninja-build
+sudo apt-get install -y google-mock libboost-all-dev  libeigen3-dev libgflags-dev libgoogle-glog-dev liblua5.2-dev libprotobuf-dev  libsuitesparse-dev libwebp-dev ninja-build protobuf-compiler python-sphinx  ros-kinetic-tf2-eigen libatlas-base-dev libsuitesparse-dev liblapack-dev
 
