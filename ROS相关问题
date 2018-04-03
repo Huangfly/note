@@ -30,6 +30,7 @@ source ~/.bashrc
     在project（gtest CXX C）后面添加 cmake_policy(SET CMP0002 OLD)
   3）cairo版本错误，用apt安装libcairo2-dev库；
   
+  
 3.想要使用navigation下的robot_pose_ekf做IMU与视觉的融合于是找到了这个包：https://github.com/ros-planning/navigation/tree/indigo-devel
 但是编译报错：
 
@@ -47,5 +48,5 @@ sudo apt-get install ros-indigo-bfl
     
 
 4、cartographer
-sudo apt-get install -y Python-wstool python-rosdep ninja-build
+sudo apt-get install -y Python-wstool python-rosdep ninja-build libsdl1.2-dev
 sudo apt-get install -y google-mock libboost-all-dev  libeigen3-dev libgflags-dev libgoogle-glog-dev liblua5.2-dev libprotobuf-dev  libsuitesparse-dev libwebp-dev ninja-build protobuf-compiler python-sphinx  ros-kinetic-tf2-eigen libatlas-base-dev libsuitesparse-dev liblapack-dev libbullet-dev libbullet-dev ros-kinetic-ecl libcairo2-dev
