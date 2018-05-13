@@ -1,0 +1,103 @@
+vim本身是一个非常优秀的编辑器，为了提升使用流畅感，增加一些功能，就需要安装一些插件，先放一张个人常用的vim界面截图。左侧可以快速切换所有文档，右侧可以查看所有折叠的函数，完成快速切换。
+
+个人喜好vim的原因是，这种加入的功能，不想使用，可以直接关闭，直接剩下一个黑框，感觉很赞。
+
+ 
+
+插件管理器：Vundle:
+	
+#Vundle安装方法---shell命令下
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+#查看安装的内容
+cd ~/.vim/bundle/Vundle.vim
+ 
+#复制一份配置文件
+cd ~
+cp .vimrc .vimrc_1
+
+修改vim配置文件：
+	
+#shell命令下进入文件.vimrc
+vim .vimrc
+ 
+"根据Vundle官方说明进行配置，个人常用插件和配置信息如下，详情请参考Vundle官方配置说明：README_ZH_CN.md
+ 
+set nocompatible " 去除VI一致性,必须
+filetype off " 必须
+ 
+" 设置包括vundle和初始化相关的runtime path
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+ 
+ " 让vundle管理插件版本,必须
+Plugin 'VundleVim/Vundle.vim'
+ 
+ " 下面是我个人常用的插件配置
+Bundle 'Lokaltog/vim-powerline'
+ 
+Bundle 'tpope/vim-commentary'
+ 
+Bundle 'scrooloose/nerdtree'
+map <F12> :NERDTreeToggle<CR>
+ 
+Bundle 'majutsushi/tagbar'
+map <silent> <F4> :TagbarToggle<CR>
+ 
+Bundle 'Valloric/YouCompleteMe'
+ 
+ " 你的所有插件需要在下面这行之前
+call vundle#end() " 必须
+filetype plugin indent on " 必须 加载vim自带和插件相应的语法和文件类型相关脚本
+ 
+" 简要帮助文档
+" :PluginList - 列出所有已配置的插件
+" :PluginInstall - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
+" :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
+" :PluginClean - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插件
+"
+" 查阅 :h vundle 获取更多细节和wiki以及FAQ
+
+ 
+
+安装所有的插件
+	
+#shell下输入命令
+vim
+ 
+#进入vim后，分别使用下面的两条命令，安装所有的插件
+PluginList
+PluginInstall
+
+ 
+
+YouCompleteMe ：设置
+	
+#YouCompleteMe
+#YouCompleteMe下载后，因为要进行编译后才能使用，本人在趟过大量的坑后，终于搞懂是什么情况，通宵两个晚上，血泪史呀！英语薄弱真的很致命。
+ 
+#进入YouCompleteMe
+cd ~/.vim/bundle/YouCompleteMe
+ 
+#执行编译命令
+./install.sh
+ 
+#如果无法编译，安装相关支持
+sudo apt-get install cmake
+sudo apt-get install python-dev
+ 
+#将编译后的文件，把其中的.ycm_extra_conf.py复制到用户目录下，就可以使用了
+cp ~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py ~/
+
+ 
+
+NERDTree ---常用快捷键
+
+？：显示所有的快捷键信息，如果对快捷键不熟悉，可以看看，常用的不多
+
+ctrl+w+w 光标在左右窗口切换
+
+ctrl+w+r 切换当前窗口左右布局
+
+ i和s水平分割或纵向分割窗口打开文件
+
+m 显示文件系统菜单（添加、删除、移动操作）
